@@ -55,3 +55,12 @@ class Snake:
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
 
+    # Reset the snake
+    def reset_snake(self):
+        # Dispose of the old snake (out of the current window)
+        for segment in self.segments:
+            segment.goto(1000, 1000)
+        self.segments.clear()
+        self.new_snake()
+        self.head = self.segments[0]
+

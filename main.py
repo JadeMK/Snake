@@ -26,4 +26,9 @@ while True:
     time.sleep(0.1)
     snake.move()
 
+    # Detect collision with wall
+    if snake.head.xcor() > 285 or snake.head.xcor() < -285 or snake.head.ycor() > 285 or snake.head.ycor() < -285:
+        snake.reset_snake()
+        # TODO: Update lives
+
 screen.exitonclick()
