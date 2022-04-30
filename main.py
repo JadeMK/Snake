@@ -1,5 +1,6 @@
 from turtle import Screen
 from snake import Snake
+from food import Food
 import time
 
 # Screen setup
@@ -10,8 +11,9 @@ screen.title("Snaky Snaky")
 # tracer = 0 meaning off
 screen.tracer(0)
 
-# Snake
+# Snake, food
 snake = Snake()
+food = Food()
 
 # Snake control
 screen.listen()
@@ -30,5 +32,11 @@ while True:
     if snake.head.xcor() > 285 or snake.head.xcor() < -285 or snake.head.ycor() > 285 or snake.head.ycor() < -285:
         snake.reset_snake()
         # TODO: Update lives
+
+    # When the snake eats food
+    if snake.head.distance(food) < 15:
+        snake.extend()
+        food.refresh()
+        # TODO: Update scores
 
 screen.exitonclick()

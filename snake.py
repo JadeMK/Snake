@@ -29,6 +29,11 @@ class Snake:
         new_segment.goto(position)
         self.segments.append(new_segment)
 
+    # Extend snake's tail (by 1 segment)
+    def extend(self):
+        position = self.segments[-1].position()
+        self.new_segment(position)
+
     # Snake movement
     def move(self):
         # Segments move starting from the end of the snake
