@@ -24,7 +24,7 @@ screen.onkey(snake.down, "Down")
 screen.onkey(snake.left, "Left")
 screen.onkey(snake.right, "Right")
 
-# Snake movement test loop
+# Game play loop
 while True:
     screen.update()
     time.sleep(0.1)
@@ -33,12 +33,18 @@ while True:
     # Detect collision with wall
     if snake.head.xcor() > 285 or snake.head.xcor() < -285 or snake.head.ycor() > 285 or snake.head.ycor() < -285:
         snake.reset_snake()
-        # TODO: Update lives
+        scoreboard.lives -= 1
+        scoreboard.update_score()
 
     # When the snake eats food
     if snake.head.distance(food) < 15:
         snake.extend()
         food.refresh()
         # TODO: Update scores
+
+    # Game over when all lives run out
+    if scoreboard.lives == 0:
+        scoreboard.game_over()
+        break
 
 screen.exitonclick()

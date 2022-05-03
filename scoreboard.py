@@ -20,3 +20,7 @@ class Scoreboard(Turtle):
         self.clear()
         self.write(f"Score: {self.current_score} | Snake: {self.lives}", move=False, align="center", font=FONT)
 
+    # Write "Game over" on screen
+    def game_over(self):
+        self.goto(0, 0)
+        self.write(f"GAME OVER", move=False, align="center", font=FONT)
