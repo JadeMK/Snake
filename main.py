@@ -36,11 +36,19 @@ while True:
         scoreboard.lives -= 1
         scoreboard.update_score()
 
+    # Detect collision with its tail
+    for segment in snake.segments[1:]:
+        if snake.head.distance(segment) < 10:
+            scoreboard.lives -= 1
+            scoreboard.update_score()
+            snake.reset_snake()
+
     # When the snake eats food
     if snake.head.distance(food) < 15:
         snake.extend()
         food.refresh()
-        # TODO: Update scores
+        scoreboard.current_score += 1
+        scoreboard.update_score()
 
     # Game over when all lives run out
     if scoreboard.lives == 0:
