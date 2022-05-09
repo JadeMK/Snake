@@ -34,21 +34,20 @@ while True:
     if snake.head.xcor() > 285 or snake.head.xcor() < -285 or snake.head.ycor() > 285 or snake.head.ycor() < -285:
         snake.reset_snake()
         scoreboard.lives -= 1
-        scoreboard.update_score()
+        scoreboard.reset_score()
 
     # Detect collision with its tail
     for segment in snake.segments[1:]:
         if snake.head.distance(segment) < 10:
             scoreboard.lives -= 1
-            scoreboard.update_score()
+            scoreboard.reset_score()
             snake.reset_snake()
 
     # When the snake eats food
     if snake.head.distance(food) < 15:
         snake.extend()
         food.refresh()
-        scoreboard.current_score += 1
-        scoreboard.update_score()
+        scoreboard.increase_score()
 
     # Game over when all lives run out
     if scoreboard.lives == 0:
