@@ -1,2 +1,4 @@
 # Snake
-A simple Snake game programmed in Python with Turtle.
+The Snake game programmed in Python with Turtle module.
+
+- .gif demo
